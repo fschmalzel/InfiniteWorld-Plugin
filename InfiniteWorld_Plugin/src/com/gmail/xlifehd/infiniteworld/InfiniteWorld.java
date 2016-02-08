@@ -23,6 +23,7 @@ public class InfiniteWorld extends JavaPlugin {
 		config.addDefault("X-Offset", 0);
 		config.addDefault("Z-Offset", 0);
 		config.addDefault("Bufferzone", 5);
+		config.addDefault("Type", "round");
 		config.options().header("Config for InfiniteWorld");
 		config.options().copyDefaults(true);
 		saveConfig();

@@ -19,12 +19,16 @@ public class CommandConfig implements CommandExecutor {
 			config.set("X-Offset", player.getLocation().getBlockX());
 			config.set("Z-Offset", player.getLocation().getBlockZ());
 			
-			if (args.length >= 1) {
-				config.set("Radius", Integer.parseUnsignedInt(args[0]));
+			if ( args.length >= 1 ) {
+				config.set("Type", args[0]);
 			}
 			
-			if (args.length >= 2) {
-				config.set("Bufferzone", Integer.parseUnsignedInt(args[1]));
+			if ( args.length >= 2 ) {
+				config.set("Radius", Integer.parseUnsignedInt(args[1]));
+			}
+			
+			if ( args.length >= 3 ) {
+				config.set("Bufferzone", Integer.parseUnsignedInt(args[2]));
 			}
 			
 			config.options().copyDefaults(true);

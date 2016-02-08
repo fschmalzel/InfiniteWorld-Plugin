@@ -4,4 +4,4 @@ version: 1.0
 commands:
   IWset:
     description: Use this command to set the center, radius and bufferzone of the boundary.
-    usage: /IWset [radius] [bufferzone]
+    usage: /IWset [type] [radius] [bufferzone]
