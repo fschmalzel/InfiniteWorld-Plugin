@@ -1,6 +1,6 @@
 name: InfiniteWorld
 main: com.gmail.xlifehd.infiniteworld.InfiniteWorld
-version: 0.2
+version: 1.0
 commands:
   IWset:
     description: Use this command to set the center, radius and bufferzone of the boundary.
