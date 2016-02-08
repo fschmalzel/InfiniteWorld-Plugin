@@ -20,12 +20,6 @@ public class MovementListener implements Listener {
 		int x = (int) loc.getX() - offsetx;
 		int z = (int) loc.getZ() - offsetz;
 		
-		/*Debug
-		 * 		 if ( Math.abs(x) >= boundary || Math.abs(z) >= boundary ) {
-			Bukkit.broadcastMessage("X: " + x + " | Z: " + z);
-		}
-		*/
-		
 		//X-Coordinate Handler
 		if ( x >= boundary ) { 
 			loc.setX( -boundary + bufferzone + offsetx );

@@ -23,7 +23,7 @@ public class InfiniteWorld extends JavaPlugin {
 		config.options().copyDefaults(true);
 		saveConfig();
 		getServer().getPluginManager().registerEvents(new MovementListener(), this);
-		
+		this.getCommand("IWset").setExecutor(new CommandConfig());
 	}
 	
 	@Override
