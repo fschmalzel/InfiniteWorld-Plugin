@@ -17,11 +17,13 @@ public class InfiniteWorld extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 		
-		//Config
+		//Configuration
+		
 		config.addDefault("Boundary", 100);
 		config.addDefault("X-Offset", 0);
 		config.addDefault("Z-Offset", 0);
 		config.addDefault("Bufferzone", 5);
+		config.options().header("Config for InfiniteWorld");
 		config.options().copyDefaults(true);
 		saveConfig();
 		
