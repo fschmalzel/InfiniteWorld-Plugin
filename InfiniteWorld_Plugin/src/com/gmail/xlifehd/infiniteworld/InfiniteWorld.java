@@ -16,12 +16,16 @@ public class InfiniteWorld extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		instance = this;
+		
+		//Config
 		config.addDefault("Boundary", 100);
 		config.addDefault("X-Offset", 0);
 		config.addDefault("Z-Offset", 0);
 		config.addDefault("Bufferzone", 5);
 		config.options().copyDefaults(true);
 		saveConfig();
+		
+		//Registering
 		getServer().getPluginManager().registerEvents(new MovementListener(), this);
 		this.getCommand("IWset").setExecutor(new CommandConfig());
 	}

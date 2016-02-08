@@ -14,6 +14,10 @@ public class CommandConfig implements CommandExecutor {
 			Player player = (Player) sender;
 			Bukkit.broadcastMessage("Command: " + cmd + " | Label: " + label);
 			Bukkit.broadcastMessage("Called by " + player.getDisplayName() + ".");
+			InfiniteWorld.getPlugin().config.set("X-Offset", player.getLocation().getBlockX());
+			InfiniteWorld.getPlugin().config.set("Z-Offset", player.getLocation().getBlockZ());
+			InfiniteWorld.getPlugin().saveConfig();
+			InfiniteWorld.getPlugin().config.options().copyDefaults(true);
 		}
 		return true;
 	}

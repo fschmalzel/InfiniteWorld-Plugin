@@ -10,15 +10,18 @@ public class MovementListener implements Listener {
 	
 	@EventHandler
 	public void onPlayerMove (PlayerMoveEvent event) {
-		FileConfiguration config = InfiniteWorld.getPlugin().getConfig();
+		
+		//Loading Config
+		FileConfiguration config = InfiniteWorld.getPlugin().config;
 		int boundary = config.getInt("Boundary");
 		int offsetx = config.getInt("X-Offset");
 		int offsetz = config.getInt("Z-Offset");
 		int bufferzone = config.getInt("Bufferzone");
 		
+		//Getting current Location
 		Location loc = event.getTo();
-		int x = (int) loc.getX() - offsetx;
-		int z = (int) loc.getZ() - offsetz;
+		int x = loc.getBlockX() - offsetx;
+		int z = loc.getBlockZ() - offsetz;
 		
 		//X-Coordinate Handler
 		if ( x >= boundary ) { 
@@ -27,7 +30,7 @@ public class MovementListener implements Listener {
 			loc.setX( boundary - bufferzone + offsetx ); 
 		}
 		
-		//Y-Coordinate Handler
+		//Z-Coordinate Handler
 		if ( z >= boundary ) { 
 			loc.setZ( -boundary + bufferzone + offsetz ); 
 		} else if ( z <= -boundary ) { 
