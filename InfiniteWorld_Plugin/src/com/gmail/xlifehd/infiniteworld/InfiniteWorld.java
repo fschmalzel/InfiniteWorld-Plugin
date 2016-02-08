@@ -18,8 +18,8 @@ public class InfiniteWorld extends JavaPlugin {
 		instance = this;
 		
 		//Configuration
-		
-		config.addDefault("Boundary", 100);
+		config.addDefault("CfgVersion", 1);
+		config.addDefault("Radius", 100);
 		config.addDefault("X-Offset", 0);
 		config.addDefault("Z-Offset", 0);
 		config.addDefault("Bufferzone", 5);

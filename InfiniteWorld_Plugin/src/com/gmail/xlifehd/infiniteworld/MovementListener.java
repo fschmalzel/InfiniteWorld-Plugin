@@ -13,7 +13,7 @@ public class MovementListener implements Listener {
 		
 		//Loading Config
 		FileConfiguration config = InfiniteWorld.getPlugin().config;
-		int boundary = config.getInt("Boundary");
+		int boundary = config.getInt("Radius");
 		int offsetx = config.getInt("X-Offset");
 		int offsetz = config.getInt("Z-Offset");
 		int bufferzone = config.getInt("Bufferzone");
