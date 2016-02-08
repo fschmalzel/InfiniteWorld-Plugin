@@ -9,6 +9,7 @@ public class MovementListener implements Listener {
 	
 	 @EventHandler
 	 public void onPlayerMove(PlayerMoveEvent event) {
+		 
 		 Location loc = event.getTo();
 		 int boundary = 100;
 		 int offsetx = 0;
@@ -39,4 +40,5 @@ public class MovementListener implements Listener {
 		 
 
 	 }
+	 
 }
