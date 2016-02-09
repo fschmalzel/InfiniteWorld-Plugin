@@ -31,8 +31,7 @@ public class MovementListener implements Listener {
 	private void circleBorder(Location loc, int boundary, int offsetx, int offsetz, int bufferzone) {
 		double x = loc.getX() - offsetx;
 		double z = loc.getZ() - offsetz;
-		double length = Math.sqrt( x*x + z*z );
-		if (length >= boundary ) {
+		if ( Math.sqrt( x*x + z*z ) >= boundary ) {
 			if ( x >= 0 ) { 
 				loc.setX( Math.cos( Math.atan2(z, x) ) * - ( boundary - bufferzone ) );
 			} else { 
