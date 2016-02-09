@@ -29,23 +29,20 @@ public class MovementListener implements Listener {
 	}
 	
 	private void circleBorder(Location loc, int boundary, int offsetx, int offsetz, int bufferzone) {
-		
-		int x = loc.getBlockX() - offsetx;
-		int z = loc.getBlockZ() - offsetz;
-		if ( Math.sqrt( x*x + z*z ) >= boundary ) {
-			
+		double x = loc.getX() - offsetx;
+		double z = loc.getZ() - offsetz;
+		double length = Math.sqrt( x*x + z*z );
+		if (length >= boundary ) {
 			if ( x >= 0 ) { 
-				loc.setX( -x + bufferzone + offsetx );
-			} else if ( x <= 0 ) { 
-				loc.setX( -x - bufferzone + offsetx ); 
+				loc.setX( Math.cos( Math.atan2(z, x) ) * - ( boundary - bufferzone ) );
+			} else { 
+				loc.setX( Math.cos( Math.atan2(z, x) ) * - ( boundary - bufferzone ) ); 
 			}
-			
 			if ( z >= 0 ) { 
-				loc.setZ( -z + bufferzone + offsetz ); 
-			} else if ( z <= 0 ) { 
-				loc.setZ( z - bufferzone + offsetz ); 
+				loc.setZ( Math.sin( Math.atan2(z, x) ) * - ( boundary - bufferzone ) ); 
+			} else { 
+				loc.setZ( Math.sin( Math.atan2(z, x) ) * - ( boundary - bufferzone ) ); 
 			}
-			
 		}
 	}
 	

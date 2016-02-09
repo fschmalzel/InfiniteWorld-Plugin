@@ -18,7 +18,6 @@ public class InfiniteWorld extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		instance = this;
-		
 		//Configuration
 		config.addDefault("CfgVersion", 1);
 		config.addDefault("Radius", 100);
