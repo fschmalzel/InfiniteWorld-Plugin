@@ -17,19 +17,22 @@ public class MovementListener implements Listener {
 		int offsetx = config.getInt("X-Offset");
 		int offsetz = config.getInt("Z-Offset");
 		int bufferzone = config.getInt("Bufferzone");
-		String type = config.getString("Type");
+		String shape = config.getString("Shape");
 		Location loc = event.getTo();
-		if (type == "circle") {
+		
+		if ( shape.equalsIgnoreCase("circle") ) {
 			circleBorder(loc, boundary, offsetx, offsetz, bufferzone);
-		} else {
-			rectangleBorder(loc, boundary, offsetx, offsetz, bufferzone);
+		} else if ( shape.equalsIgnoreCase("square") ) {
+			squareBorder(loc, boundary, offsetx, offsetz, bufferzone);
 		}
+		
 	}
 	
 	private void circleBorder(Location loc, int boundary, int offsetx, int offsetz, int bufferzone) {
+		
 		int x = loc.getBlockX() - offsetx;
 		int z = loc.getBlockZ() - offsetz;
-		if ( Math.sqrt( x^2 + z^2 ) >= boundary ) {
+		if ( Math.sqrt( x*x + z*z ) >= boundary ) {
 			
 			if ( x >= 0 ) { 
 				loc.setX( -x + bufferzone + offsetx );
@@ -46,7 +49,7 @@ public class MovementListener implements Listener {
 		}
 	}
 	
-	private void rectangleBorder(Location loc, int boundary, int offsetx, int offsetz, int bufferzone) {
+	private void squareBorder(Location loc, int boundary, int offsetx, int offsetz, int bufferzone) {
 		//Getting current Location
 		int x = loc.getBlockX() - offsetx;
 		int z = loc.getBlockZ() - offsetz;

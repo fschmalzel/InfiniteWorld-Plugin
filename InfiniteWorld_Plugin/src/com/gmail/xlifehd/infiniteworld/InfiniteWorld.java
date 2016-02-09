@@ -1,5 +1,6 @@
 package com.gmail.xlifehd.infiniteworld;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,6 +13,7 @@ public class InfiniteWorld extends JavaPlugin {
 	}
 	
 	FileConfiguration config = getConfig();
+	public static String pluginPrefix = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.BOLD + "Infinite" + ChatColor.GREEN + "World" + ChatColor.RESET + ChatColor.DARK_GRAY + "] " + ChatColor.WHITE;
 	
 	@Override
 	public void onEnable() {
@@ -23,7 +25,7 @@ public class InfiniteWorld extends JavaPlugin {
 		config.addDefault("X-Offset", 0);
 		config.addDefault("Z-Offset", 0);
 		config.addDefault("Bufferzone", 5);
-		config.addDefault("Type", "round");
+		config.addDefault("Shape", "square");
 		config.options().header("Config for InfiniteWorld");
 		config.options().copyDefaults(true);
 		saveConfig();

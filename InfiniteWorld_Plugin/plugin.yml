@@ -3,5 +3,5 @@ main: com.gmail.xlifehd.infiniteworld.InfiniteWorld
 version: 1.0
 commands:
   IWset:
-    description: Use this command to set the center, radius and bufferzone of the boundary.
-    usage: /IWset [type] [radius] [bufferzone]
+    description: "Use this command to set the center, shape, radius and bufferzone of the boundary. Shapes: circle, square, disabled."
+    usage: /IWset [shape] [radius] [bufferzone]

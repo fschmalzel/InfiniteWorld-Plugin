@@ -11,16 +11,19 @@ public class CommandConfig implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
-		if (sender instanceof Player ) {
-			
+		if (sender instanceof Player && ( sender.hasPermission("IW.set") || sender.isOp() ) ) {
 			FileConfiguration config = InfiniteWorld.getPlugin().config;
 			Player player = (Player) sender;
-
+			
 			config.set("X-Offset", player.getLocation().getBlockX());
 			config.set("Z-Offset", player.getLocation().getBlockZ());
 			
 			if ( args.length >= 1 ) {
-				config.set("Type", args[0]);
+				if ( args[0].equalsIgnoreCase("help") ) {
+					player.chat("/help iwset");
+					return true;
+				}
+				config.set("Shape", (String) args[0]);
 			}
 			
 			if ( args.length >= 2 ) {
@@ -33,11 +36,16 @@ public class CommandConfig implements CommandExecutor {
 			
 			config.options().copyDefaults(true);
 			InfiniteWorld.getPlugin().saveConfig();
-			player.chat("[InfiniteWorld] Config updated!");
+			sender.sendMessage(InfiniteWorld.pluginPrefix + "Config updated!");
 			
 			return true;
-			
-		} else return false;
+		} else if ( sender instanceof Player ){
+			sender.sendMessage(InfiniteWorld.pluginPrefix + "Not enough permissions.");
+			return true;
+		} else {
+			sender.sendMessage(InfiniteWorld.pluginPrefix + "You have to be player.");
+			return true;
+		}
 		
 	}
 	
