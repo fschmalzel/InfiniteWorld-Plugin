@@ -32,16 +32,8 @@ public class MovementListener implements Listener {
 		double x = loc.getX() - offsetx;
 		double z = loc.getZ() - offsetz;
 		if ( Math.sqrt( x*x + z*z ) >= boundary ) {
-			if ( x >= 0 ) { 
-				loc.setX( Math.cos( Math.atan2(z, x) ) * - ( boundary - bufferzone ) );
-			} else { 
-				loc.setX( Math.cos( Math.atan2(z, x) ) * - ( boundary - bufferzone ) ); 
-			}
-			if ( z >= 0 ) { 
-				loc.setZ( Math.sin( Math.atan2(z, x) ) * - ( boundary - bufferzone ) ); 
-			} else { 
-				loc.setZ( Math.sin( Math.atan2(z, x) ) * - ( boundary - bufferzone ) ); 
-			}
+			loc.setX( Math.cos( Math.atan2(z, x) ) * - ( boundary - bufferzone ) );
+			loc.setZ( Math.sin( Math.atan2(z, x) ) * - ( boundary - bufferzone ) ); 
 		}
 	}
 	
