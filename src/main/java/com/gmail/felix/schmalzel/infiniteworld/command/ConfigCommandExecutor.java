@@ -1,41 +1,52 @@
-package com.gmail.felix.schmalzel.infiniteworld;
+package com.gmail.felix.schmalzel.infiniteworld.command;
 
+import com.gmail.felix.schmalzel.infiniteworld.BorderShape;
+import com.gmail.felix.schmalzel.infiniteworld.InfiniteWorld;
+import com.gmail.felix.schmalzel.infiniteworld.InfiniteWorldConfig;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-public class CommandConfig implements CommandExecutor {
+public class ConfigCommandExecutor implements CommandExecutor {
+
+	private final InfiniteWorldConfig config;
+
+	public ConfigCommandExecutor(InfiniteWorldConfig config) {
+		this.config = config;
+	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
 		if (sender instanceof Player && ( sender.hasPermission("IW.set") || sender.isOp() ) ) {
-			FileConfiguration config = InfiniteWorld.getPlugin().getConfig();
 			Player player = (Player) sender;
-			
-			config.set("X-Offset", player.getLocation().getBlockX());
-			config.set("Z-Offset", player.getLocation().getBlockZ());
+
+			config.setxOffset(player.getLocation().getBlockX());
+			config.setzOffset(player.getLocation().getBlockZ());
 			
 			if ( args.length >= 1 ) {
 				if ( args[0].equalsIgnoreCase("help") ) {
 					player.chat("/help iwset");
 					return true;
 				}
-				config.set("Shape", (String) args[0]);
+
+				// TODO exception handling
+				BorderShape shape = BorderShape.valueOf((String) args[0]);
+
+				config.setShape(shape);
 			}
 			
 			if ( args.length >= 2 ) {
-				config.set("Radius", Integer.parseUnsignedInt(args[1]));
+				config.setRadius(Integer.parseUnsignedInt(args[1]));
 			}
 			
 			if ( args.length >= 3 ) {
-				config.set("Bufferzone", Integer.parseUnsignedInt(args[2]));
+				config.setPadding(Integer.parseUnsignedInt(args[2]));
 			}
-			
-			config.options().copyDefaults(true);
-			InfiniteWorld.getPlugin().saveConfig();
+
+			config.save();
 			sender.sendMessage(InfiniteWorld.pluginPrefix + "Config updated!");
 			
 			return true;
