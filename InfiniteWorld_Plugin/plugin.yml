@@ -1,7 +1,0 @@
-name: InfiniteWorld
-main: com.gmail.xlifehd.infiniteworld.InfiniteWorld
-version: 1.2
-commands:
-  IWset:
-    description: "This command centers the border on the player, and optionally sets the shape, size and bufferzone. Shapes: circle, square, disabled."
-    usage: /IWset [shape] [radius] [bufferzone]
